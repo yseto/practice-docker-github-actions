@@ -29,7 +29,19 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          target: builder
           platforms: linux/amd64,linux/arm/v7
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-hello-world:latest
+
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          target: build1
+          platforms: linux/amd64,linux/arm/v7
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-hello-world:latest-build1
+
 
